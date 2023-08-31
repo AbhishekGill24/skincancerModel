@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Set the title of the web page -->
+  <title>Skin Cancer Lesion Classifier</title>
+</head>
+
+<body style="background-color: white;">
+  <br>
+  <br>
+
+  <!-- Heading for the web page -->
+  <h2 style="color:pink; font-size: 50px;"><center>Skin Cancer Lesion Classifier</center></h2><p>
+  <br>
+
+  <!-- Subheading for the web page -->
+  <h4 style="color:pink; font-size: 25px;"><center>Upload an image and click submit</center></h4>
+  <br>
+  <br>
+
+  <!-- Form for uploading an image -->
+  <form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+      <!-- Input field for selecting a file -->
+      <p style="color:pink;">
+        <input type="file" name="file" autocomplete="off" required>
+      </p>
+    </dl>
+    <p style="color:pink;">
+      <!-- Submit button for uploading the selected image -->
+      <input type="submit" name="submit" value="Submit">
+    </p>
+  </form>
+
+  <!-- Display the diagnosis result and uploaded image (if available) -->
+  <p style="color:MediumSeaGreen;">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <!-- Display the diagnosis result -->
+        <center>Diagnosis for the following image is: {{ messages[0] }}<br></center>
+        <!-- Display the uploaded image -->
+        <center><img src="{{ messages[1] }}" width="300", height="225"></center>
+      {% endif %}
+    {% endwith %}
+  </p>
+</body>
+</html>
